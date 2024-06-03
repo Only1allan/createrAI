@@ -10,7 +10,7 @@ class SubscriptionSnsService
     private static SnsClient $client;
 
 //    private static string $httpUrl = "https://878e-196-202-162-222.ngrok-free.app/api/aws/subscription/webhook";
-    private static string $httpUrl = "https://chatrova.com/api/aws/subscription/webhook";
+    private static string $httpUrl = "https://creatorai.com/api/aws/subscription/webhook";
 
     private static string $topicArn = "arn:aws:sns:us-east-1:287250355862:aws-mp-subscription-notification-32lxoy6fds2ky53glydfxwc5x";
     private static string $endpoint = "arn:aws:sqs:us-east-1:436917423698:chatrov2";
