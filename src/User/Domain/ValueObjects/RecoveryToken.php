@@ -20,7 +20,7 @@ use JsonSerializable;
 class RecoveryToken implements JsonSerializable
 {
     /**
-     * A readonly public property that stores the unique recovery token.
+     * A readonly public_html property that stores the unique recovery token.
      *
      * @var null|string $value
      */

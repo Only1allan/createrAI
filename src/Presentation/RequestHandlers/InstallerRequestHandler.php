@@ -153,7 +153,7 @@ class InstallerRequestHandler implements RequestHandlerInterface
         // Check writeable directories
         $writeAccess = [];
         $checkDirs = [
-            '/public/uploads/',
+            '/public_html/uploads/',
             '/public_html/uploads/',
             '/var/',
             '/',

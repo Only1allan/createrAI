@@ -565,7 +565,7 @@
                 }
             });
 
-        // If is a string and doesn't start with an underscore or 'init' function, treat this as a call to a public method.
+        // If is a string and doesn't start with an underscore or 'init' function, treat this as a call to a public_html method.
         } else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
 
             // Cache the method call to make it possible to return a value
@@ -574,7 +574,7 @@
             this.each(function () {
                 var instance = $.data(this, 'plugin_' + mobileMenu);
 
-                // Tests that there's already a plugin-instance and checks that the requested public method exists
+                // Tests that there's already a plugin-instance and checks that the requested public_html method exists
                 if (instance instanceof Plugin && typeof instance[options] === 'function') {
 
                     // Call the method of our plugin instance, and pass it the supplied arguments.

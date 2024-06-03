@@ -108,7 +108,7 @@ class ModuleGenerator
         $class->addMethod('__construct')
             ->addComment('@param ' . $moduleName . 'RepositoryInterface $repo')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addPromotedParameter('repo')
             ->setType($moduleName . '\Domain\Repositories\\' . $moduleName . 'RepositoryInterface')
             ->setVisibility('private');
@@ -116,7 +116,7 @@ class ModuleGenerator
         $method = $class->addMethod('handle')
             ->addComment('@param Count' . $moduleName . 'sCommand $cmd')
             ->addComment('@return int')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('int');
 
         $method->addParameter('cmd')
@@ -156,7 +156,7 @@ class ModuleGenerator
         $class->addMethod('__construct')
             ->addComment('@param Create' . $moduleName . 'Service $service')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addPromotedParameter('service')
             ->setType($moduleName . '\Domain\Services\Create' . $moduleName . 'Service')
             ->setVisibility('private');
@@ -164,7 +164,7 @@ class ModuleGenerator
         $method = $class->addMethod('handle')
             ->addComment('@param Create' . $moduleName . 'Command $cmd')
             ->addComment('@return ' . $moduleName . 'Entity')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
 
         $method->addParameter('cmd')
@@ -205,7 +205,7 @@ class ModuleGenerator
         $class->addMethod('__construct')
             ->addComment('@param Delete' . $moduleName . 'Service $service')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addPromotedParameter('service')
             ->setType($moduleName . '\Domain\Services\Delete' . $moduleName . 'Service')
             ->setVisibility('private');
@@ -214,7 +214,7 @@ class ModuleGenerator
             ->addComment('@param Delete' . $moduleName . 'Command $cmd')
             ->addComment('@return void')
             ->addComment('@throws ' . $moduleName . 'NotFoundException')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('void');
 
         $method->addParameter('cmd')
@@ -258,7 +258,7 @@ class ModuleGenerator
             ->addComment('@param ' . $moduleName . 'RepositoryInterface $repo')
             ->addComment('@param Read' . $moduleName . 'Service $service')
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $construct->addPromotedParameter('repo')
             ->setType($moduleName . '\Domain\Repositories\\' . $moduleName . 'RepositoryInterface')
@@ -272,7 +272,7 @@ class ModuleGenerator
             ->addComment('@param List' . $moduleName . 'sCommand $cmd')
             ->addComment('@return Traversable<' . $moduleName . 'Entity>')
             ->addComment('@throws ' . $moduleName . 'NotFoundException')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('Traversable');
 
         $method->addParameter('cmd')
@@ -330,7 +330,7 @@ class ModuleGenerator
         $class->addMethod('__construct')
             ->addComment('@param Read' . $moduleName . 'Service $service')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addPromotedParameter('service')
             ->setType($moduleName . '\Domain\Services\Read' . $moduleName . 'Service')
             ->setVisibility('private');
@@ -339,7 +339,7 @@ class ModuleGenerator
             ->addComment('@param Read' . $moduleName . 'Command $cmd')
             ->addComment('@return ' . $moduleName . 'Entity')
             ->addComment('@throws ' . $moduleName . 'NotFoundException')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
 
         $method->addParameter('cmd')
@@ -378,7 +378,7 @@ class ModuleGenerator
         $class->addMethod('__construct')
             ->addComment('@param Update' . $moduleName . 'Service $service')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addPromotedParameter('service')
             ->setType($moduleName . '\Domain\Services\Update' . $moduleName . 'Service')
             ->setVisibility('private');
@@ -387,7 +387,7 @@ class ModuleGenerator
             ->addComment('@param Update' . $moduleName . 'Command $cmd')
             ->addComment('@return ' . $moduleName . 'Entity')
             ->addComment('@throws ' . $moduleName . 'NotFoundException')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
 
         $method->addParameter('cmd')
@@ -486,14 +486,14 @@ class ModuleGenerator
             ]);
 
         $class->addProperty('id')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(Id::class);
 
         $method = $class->addMethod('__construct')
             ->addComment('@param string $id')
             ->addComment('@return void')
             ->addBody('$this->id = new Id($id);')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter('id')
             ->setType('string');
@@ -534,42 +534,42 @@ class ModuleGenerator
             ->setExtends($moduleName . '\Application\Commands\Count' . $moduleName . 'sCommand');
 
         $class->addProperty('sortParameter')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType($moduleName . '\Domain\ValueObjects\SortParameter')
             ->setNullable(true)
             ->setValue(null);
 
         $class->addProperty('sortDirection')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(SortDirection::class)
             ->setValue(new Literal('SortDirection::DESC'));
 
         $class->addProperty('cursor')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(Id::class)
             ->setNullable(true)
             ->setValue(null);
 
         $class->addProperty('maxResults')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(MaxResults::class)
             ->setNullable(true);
 
         $class->addProperty('cursorDirection')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(CursorDirection::class)
             ->setValue(new Literal('CursorDirection::STARTING_AFTER'));
 
         $class->addMethod('__construct')
             ->addComment('@return void')
             ->addBody('$this->maxResults = new MaxResults(MaxResults::DEFAULT);')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method = $class->addMethod('setOrderBy')
             ->addComment('@param string $orderBy')
             ->addComment('@param string $dir')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('void');
 
         $method->addParameter('orderBy')
@@ -585,7 +585,7 @@ class ModuleGenerator
             ->addComment('@param string $id')
             ->addComment('@param string $dir')
             ->addComment('@return List' . $moduleName . 'sCommand')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('self');
 
         $method->addParameter('id')
@@ -603,7 +603,7 @@ class ModuleGenerator
         $method = $class->addMethod('setLimit')
             ->addComment('@param int $limit')
             ->addComment('@return List' . $moduleName . 'sCommand')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('self');
 
         $method->addParameter('limit')
@@ -644,14 +644,14 @@ class ModuleGenerator
             ]);
 
         $class->addProperty('id')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(Id::class);
 
         $method = $class->addMethod('__construct')
             ->addComment('@param string $id')
             ->addComment('@return void')
             ->addBody('$this->id = new Id($id);')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter('id')
             ->setType('string');
@@ -687,14 +687,14 @@ class ModuleGenerator
             ]);
 
         $class->addProperty('id')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setType(Id::class);
 
         $method = $class->addMethod('__construct')
             ->addComment('@param string $id')
             ->addComment('@return void')
             ->addBody('$this->id = new Id($id);')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter('id')
             ->setType('string');
@@ -770,7 +770,7 @@ class ModuleGenerator
 
         $method = new Method('__construct');
         $method
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@return void')
             ->addBody('$this->id = new Id();')
             ->addBody('$this->createdAt = new DateTime();');
@@ -778,7 +778,7 @@ class ModuleGenerator
 
         $method = new Method('getId');
         $method
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@return Id')
             ->setReturnType(Id::class)
             ->setBody('return $this->id;');
@@ -786,7 +786,7 @@ class ModuleGenerator
 
         $method = new Method('getCreatedAt');
         $method
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@return DateTimeInterface')
             ->setReturnType(DateTimeInterface::class)
             ->setBody('return $this->createdAt;');
@@ -794,7 +794,7 @@ class ModuleGenerator
 
         $method = new Method('getUpdatedAt');
         $method
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@return null|DateTimeInterface')
             ->setReturnNullable(true)
             ->setReturnType(DateTimeInterface::class)
@@ -803,7 +803,7 @@ class ModuleGenerator
 
         $method = new Method('preUpdate');
         $method
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@return void')
             ->setReturnType('void')
             ->setBody('$this->updatedAt = new DateTime();');
@@ -839,7 +839,7 @@ class ModuleGenerator
             ->addComment('@return void')
             ->addPromotedParameter(lcfirst($moduleName))
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReadOnly(true);
 
         $this->saveToFile(
@@ -903,7 +903,7 @@ class ModuleGenerator
             ->addComment('@param int $code')
             ->addComment('@param null|Throwable $previous')
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addPromotedParameter('id')
             ->setType(Id::class)
@@ -964,7 +964,7 @@ class ModuleGenerator
             ->addComment('@package ' . $moduleName . '\Domain\Repositories');
 
         $interface->addMethod('add')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('Add new entityt to the repository')
             ->addComment('')
             ->addComment('@param ' . $moduleName . 'Entity $' . lcfirst($moduleName))
@@ -974,7 +974,7 @@ class ModuleGenerator
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
 
         $interface->addMethod('remove')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('Remove the entity from the repository')
             ->addComment('')
             ->addComment('@param ' . $moduleName . 'Entity $' . lcfirst($moduleName))
@@ -984,7 +984,7 @@ class ModuleGenerator
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
 
         $interface->addMethod('ofId')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('Find entity by id')
             ->addComment('')
             ->addComment('@param Id $id')
@@ -995,7 +995,7 @@ class ModuleGenerator
             ->setType(Id::class);
 
         $method = $interface->addMethod('sort')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@param SortDirection $dir')
             ->addComment('@param null|SortParameter $sortParameter')
             ->addComment('@return static')
@@ -1010,7 +1010,7 @@ class ModuleGenerator
             ->setDefaultValue(null);
 
         $interface->addMethod('startingAfter')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@param ' . $moduleName . 'Entity $cursor')
             ->addComment('@return Iterator<' . $moduleName . 'Entity>')
             ->setReturnType(Iterator::class)
@@ -1018,7 +1018,7 @@ class ModuleGenerator
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
 
         $interface->addMethod('endingBefore')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addComment('@param ' . $moduleName . 'Entity $cursor')
             ->addComment('@return Iterator<' . $moduleName . 'Entity>')
             ->setReturnType(Iterator::class)
@@ -1057,7 +1057,7 @@ class ModuleGenerator
             ->addComment('@param ' . $moduleName . 'RepositoryInterface $repo')
             ->addComment('@param EventDispatcherInterface $dispatcher')
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $construct->addPromotedParameter('repo')
             ->setType($moduleName . '\Domain\Repositories\\' . $moduleName . 'RepositoryInterface')
@@ -1070,7 +1070,7 @@ class ModuleGenerator
         $method = $class->addMethod('create' . $moduleName)
             ->addComment('@param ' . $moduleName . 'Entity $' . lcfirst($moduleName))
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter(lcfirst($moduleName))
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
@@ -1117,7 +1117,7 @@ class ModuleGenerator
             ->addComment('@param ' . $moduleName . 'RepositoryInterface $repo')
             ->addComment('@param EventDispatcherInterface $dispatcher')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addBody('parent::__construct($repo);');
 
         $construct->addPromotedParameter('repo')
@@ -1131,7 +1131,7 @@ class ModuleGenerator
         $method = $class->addMethod('delete' . $moduleName)
             ->addComment('@param ' . $moduleName . 'Entity $' . lcfirst($moduleName))
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter(lcfirst($moduleName))
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
@@ -1176,7 +1176,7 @@ class ModuleGenerator
         $construct = $class->addMethod('__construct')
             ->addComment('@param ' . $moduleName . 'RepositoryInterface $repo')
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $construct->addPromotedParameter('repo')
             ->setType($moduleName . '\Domain\Repositories\\' . $moduleName . 'RepositoryInterface')
@@ -1186,7 +1186,7 @@ class ModuleGenerator
             ->addComment('@param Id $id')
             ->addComment('@return ' . $moduleName . 'Entity')
             ->addComment('@throws ' . $moduleName . 'NotFoundException')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter('id')
             ->setType(Id::class);
@@ -1231,7 +1231,7 @@ class ModuleGenerator
             ->addComment('@param ' . $moduleName . 'RepositoryInterface $repo')
             ->addComment('@param EventDispatcherInterface $dispatcher')
             ->addComment('@return void')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->addBody('parent::__construct($repo);');
 
         $construct->addPromotedParameter('repo')
@@ -1245,7 +1245,7 @@ class ModuleGenerator
         $method = $class->addMethod('update' . $moduleName)
             ->addComment('@param ' . $moduleName . 'Entity $' . lcfirst($moduleName))
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $method->addParameter(lcfirst($moduleName))
             ->setType($moduleName . '\Domain\Entities\\' . $moduleName . 'Entity');
@@ -1339,7 +1339,7 @@ class ModuleGenerator
             ->addComment('@return void')
             ->addComment('@throws InvalidArgumentException')
             ->addComment('@throws RuntimeException')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $construct->addParameter('em')
             ->setType(EntityManagerInterface::class);
@@ -1477,7 +1477,7 @@ class ModuleGenerator
         $construct = $class->addMethod('__construct')
             ->addComment('@param Application $app')
             ->addComment('@return void')
-            ->setVisibility('public');
+            ->setVisibility('public_html');
 
         $construct->addPromotedParameter('app')
             ->setType(Application::class)
@@ -1485,7 +1485,7 @@ class ModuleGenerator
 
         $method = $class->addMethod('bootstrap')
             ->addComment('@inheritDoc')
-            ->setVisibility('public')
+            ->setVisibility('public_html')
             ->setReturnType('void');
 
         $method->addBody('// Register repository implementations')

@@ -8322,7 +8322,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         const lexeme = match[0];
         const newMode = match.rule;
         const resp = new Response(newMode);
-        // first internal before callbacks, then the public ones
+        // first internal before callbacks, then the public_html ones
         const beforeCallbacks = [newMode.__beforeBegin, newMode["on:begin"]];
         for (const cb of beforeCallbacks) {
           if (!cb) continue;
@@ -11680,7 +11680,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
 
     function kotlin(hljs) {
       const KEYWORDS = {
-        keyword: 'abstract as val var vararg get set class object open private protected public noinline ' + 'crossinline dynamic final enum if else do while for when throw try catch finally ' + 'import package is in fun override companion reified inline lateinit init ' + 'interface annotation data sealed internal infix operator out by constructor super ' + 'tailrec where const inner suspend typealias external expect actual',
+        keyword: 'abstract as val var vararg get set class object open private protected public_html noinline ' + 'crossinline dynamic final enum if else do while for when throw try catch finally ' + 'import package is in fun override companion reified inline lateinit init ' + 'interface annotation data sealed internal infix operator out by constructor super ' + 'tailrec where const inner suspend typealias external expect actual',
         built_in: 'Byte Short Char Int Long Boolean Float Double Void Unit Nothing',
         literal: 'true false null'
       };
@@ -11824,7 +11824,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           excludeEnd: true,
           illegal: 'extends implements',
           contains: [{
-            beginKeywords: 'public protected internal private constructor'
+            beginKeywords: 'public_html protected internal private constructor'
           }, hljs.UNDERSCORE_TITLE_MODE, {
             className: 'type',
             begin: /</,
@@ -12490,7 +12490,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       };
       const IDENTIFIER_RE = /[a-zA-Z@][a-zA-Z0-9_]*/;
       const TYPES = ["int", "float", "char", "unsigned", "signed", "short", "long", "double", "wchar_t", "unichar", "void", "bool", "BOOL", "id|0", "_Bool"];
-      const KWS = ["while", "export", "sizeof", "typedef", "const", "struct", "for", "union", "volatile", "static", "mutable", "if", "do", "return", "goto", "enum", "else", "break", "extern", "asm", "case", "default", "register", "explicit", "typename", "switch", "continue", "inline", "readonly", "assign", "readwrite", "self", "@synchronized", "id", "typeof", "nonatomic", "IBOutlet", "IBAction", "strong", "weak", "copy", "in", "out", "inout", "bycopy", "byref", "oneway", "__strong", "__weak", "__block", "__autoreleasing", "@private", "@protected", "@public", "@try", "@property", "@end", "@throw", "@catch", "@finally", "@autoreleasepool", "@synthesize", "@dynamic", "@selector", "@optional", "@required", "@encode", "@package", "@import", "@defs", "@compatibility_alias", "__bridge", "__bridge_transfer", "__bridge_retained", "__bridge_retain", "__covariant", "__contravariant", "__kindof", "_Nonnull", "_Nullable", "_Null_unspecified", "__FUNCTION__", "__PRETTY_FUNCTION__", "__attribute__", "getter", "setter", "retain", "unsafe_unretained", "nonnull", "nullable", "null_unspecified", "null_resettable", "class", "instancetype", "NS_DESIGNATED_INITIALIZER", "NS_UNAVAILABLE", "NS_REQUIRES_SUPER", "NS_RETURNS_INNER_POINTER", "NS_INLINE", "NS_AVAILABLE", "NS_DEPRECATED", "NS_ENUM", "NS_OPTIONS", "NS_SWIFT_UNAVAILABLE", "NS_ASSUME_NONNULL_BEGIN", "NS_ASSUME_NONNULL_END", "NS_REFINED_FOR_SWIFT", "NS_SWIFT_NAME", "NS_SWIFT_NOTHROW", "NS_DURING", "NS_HANDLER", "NS_ENDHANDLER", "NS_VALUERETURN", "NS_VOIDRETURN"];
+      const KWS = ["while", "export", "sizeof", "typedef", "const", "struct", "for", "union", "volatile", "static", "mutable", "if", "do", "return", "goto", "enum", "else", "break", "extern", "asm", "case", "default", "register", "explicit", "typename", "switch", "continue", "inline", "readonly", "assign", "readwrite", "self", "@synchronized", "id", "typeof", "nonatomic", "IBOutlet", "IBAction", "strong", "weak", "copy", "in", "out", "inout", "bycopy", "byref", "oneway", "__strong", "__weak", "__block", "__autoreleasing", "@private", "@protected", "@public_html", "@try", "@property", "@end", "@throw", "@catch", "@finally", "@autoreleasepool", "@synthesize", "@dynamic", "@selector", "@optional", "@required", "@encode", "@package", "@import", "@defs", "@compatibility_alias", "__bridge", "__bridge_transfer", "__bridge_retained", "__bridge_retain", "__covariant", "__contravariant", "__kindof", "_Nonnull", "_Nullable", "_Null_unspecified", "__FUNCTION__", "__PRETTY_FUNCTION__", "__attribute__", "getter", "setter", "retain", "unsafe_unretained", "nonnull", "nullable", "null_unspecified", "null_resettable", "class", "instancetype", "NS_DESIGNATED_INITIALIZER", "NS_UNAVAILABLE", "NS_REQUIRES_SUPER", "NS_RETURNS_INNER_POINTER", "NS_INLINE", "NS_AVAILABLE", "NS_DEPRECATED", "NS_ENUM", "NS_OPTIONS", "NS_SWIFT_UNAVAILABLE", "NS_ASSUME_NONNULL_BEGIN", "NS_ASSUME_NONNULL_END", "NS_REFINED_FOR_SWIFT", "NS_SWIFT_NAME", "NS_SWIFT_NOTHROW", "NS_DURING", "NS_HANDLER", "NS_ENDHANDLER", "NS_VALUERETURN", "NS_VOIDRETURN"];
       const LITERALS = ["false", "true", "FALSE", "TRUE", "nil", "YES", "NO", "NULL"];
       const BUILT_INS = ["dispatch_once_t", "dispatch_queue_t", "dispatch_sync", "dispatch_async", "dispatch_once"];
       const KEYWORDS = {
@@ -15338,7 +15338,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           label: 'symbol'
         },
         keywords: {
-          keyword: 'addhandler alias aggregate ansi as async assembly auto binary by byref byval ' /* a-b */ + 'call case catch class compare const continue custom declare default delegate dim distinct do ' /* c-d */ + 'each equals else elseif end enum erase error event exit explicit finally for friend from function ' /* e-f */ + 'get global goto group handles if implements imports in inherits interface into iterator ' /* g-i */ + 'join key let lib loop me mid module mustinherit mustoverride mybase myclass ' /* j-m */ + 'namespace narrowing new next notinheritable notoverridable ' /* n */ + 'of off on operator option optional order overloads overridable overrides ' /* o */ + 'paramarray partial preserve private property protected public ' /* p */ + 'raiseevent readonly redim removehandler resume return ' /* r */ + 'select set shadows shared skip static step stop structure strict sub synclock ' /* s */ + 'take text then throw to try unicode until using when where while widening with withevents writeonly yield' /* t-y */,
+          keyword: 'addhandler alias aggregate ansi as async assembly auto binary by byref byval ' /* a-b */ + 'call case catch class compare const continue custom declare default delegate dim distinct do ' /* c-d */ + 'each equals else elseif end enum erase error event exit explicit finally for friend from function ' /* e-f */ + 'get global goto group handles if implements imports in inherits interface into iterator ' /* g-i */ + 'join key let lib loop me mid module mustinherit mustoverride mybase myclass ' /* j-m */ + 'namespace narrowing new next notinheritable notoverridable ' /* n */ + 'of off on operator option optional order overloads overridable overrides ' /* o */ + 'paramarray partial preserve private property protected public_html ' /* p */ + 'raiseevent readonly redim removehandler resume return ' /* r */ + 'select set shadows shared skip static step stop structure strict sub synclock ' /* s */ + 'take text then throw to try unicode until using when where while widening with withevents writeonly yield' /* t-y */,
           built_in:
           // Operators https://docs.microsoft.com/dotnet/visual-basic/language-reference/operators
           'addressof and andalso await directcast gettype getxmlnamespace is isfalse isnot istrue like mod nameof new not or orelse trycast typeof xor '

@@ -18,7 +18,7 @@ use Symfony\Component\Intl\Exception\MissingResourceException;
 /** @package Presentation\RequestHandlers\Admin */
 #[Route(path: '/settings', method: RequestMethod::GET)]
 #[Route(
-    path: '/settings/[general|brand|billing|payments|openai|elevenlabs|stabilityai|clipdrop|mail|smtp|policies|accounts|public-details|recaptcha:name]?',
+    path: '/settings/[general|brand|billing|payments|openai|elevenlabs|stabilityai|clipdrop|mail|smtp|policies|accounts|public_html-details|recaptcha:name]?',
     method: RequestMethod::GET
 )]
 #[Route(

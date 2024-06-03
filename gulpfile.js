@@ -13,7 +13,7 @@ let assets = [
 gulp.task('assets', () => {
     return gulp
         .src(assets, { nodir: true })
-        .pipe(gulp.dest('public/assets/'));
+        .pipe(gulp.dest('public_html/assets/'));
 });
 
 gulp.task('css', () => {
@@ -32,7 +32,7 @@ gulp.task('css', () => {
             require("tailwindcss")('./tailwind.config.js')
         ]))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('public/assets/'))
+        .pipe(gulp.dest('public_html/assets/'))
 })
 
 let apps = ['base', 'app', 'auth', 'admin', 'install'];
